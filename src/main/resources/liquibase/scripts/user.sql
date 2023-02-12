@@ -16,3 +16,7 @@ alter table notification_task drop column time;
 
 -- changeset aSnegireff:3
 alter table notification_task add column DateTime TIMESTAMP not null;
+
+--changeset aSnegireff:4
+alter table notification_task rename column chat_id to chatId;
+alter table notification_task rename column message_text to messageText;

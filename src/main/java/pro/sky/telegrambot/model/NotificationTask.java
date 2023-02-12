@@ -12,41 +12,41 @@ public class NotificationTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Long chat_id;
-    private String message_text;
-    private LocalDateTime datetime;
+    private Long chatId;
+    private String messageText;
+    private LocalDateTime dateTime;
 
     public NotificationTask() {
     }
 
     public NotificationTask(Long chatId, String message, LocalDateTime dateTime) {
-        this.chat_id = chatId;
-        this.message_text = message;
-        this.datetime = dateTime;
+        this.chatId = chatId;
+        this.messageText = message;
+        this.dateTime = dateTime;
     }
 
-    public Long getChat_id() {
-        return chat_id;
+    public Long getChatId() {
+        return chatId;
     }
 
-    public void setChat_id(Long chatId) {
-        this.chat_id = chatId;
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
     }
 
-    public String getMessage_text() {
-        return message_text;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMessage_text(String message) {
-        this.message_text = message;
+    public void setMessageText(String message) {
+        this.messageText = message;
     }
 
-    public LocalDateTime getDatetime() {
-        return datetime;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDatetime(LocalDateTime dateTime) {
-        this.datetime = dateTime;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     @Override

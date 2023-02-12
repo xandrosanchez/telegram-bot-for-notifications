@@ -66,9 +66,10 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
 
     @Scheduled(cron = "0 0/1 * * * *") // runs at 00 sec on every minute
     public void sendNotificationTasks() {
-        Collection<NotificationTask> currentTasks = repository.getNotificationTaskByDatetime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+        //Collection<NotificationTask> currentTasks = repository.getNotificationTaskByDatetime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+        Collection<NotificationTask> currentTasks = repository.findNotificationTaskByDateTime(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
         currentTasks.forEach(task ->
-                sendMessage(task.getMessage_text(), task.getChat_id()));
+                sendMessage(task.getMessageText(), task.getChatId()));
     }
 
     private void sendMessage(String message, Long chatId) {
