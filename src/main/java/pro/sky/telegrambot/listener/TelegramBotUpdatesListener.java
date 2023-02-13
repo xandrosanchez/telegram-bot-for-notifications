@@ -27,6 +27,8 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     private final Logger logger = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
     private final TelegramBot telegramBot;
     private final NotificationTaskRepository repository;
+    private static Pattern pattern;
+    private static Matcher matcher;
 
     public TelegramBotUpdatesListener(TelegramBot telegramBot, NotificationTaskRepository repository) {
         this.telegramBot = telegramBot;
@@ -47,8 +49,8 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
             if (incomingMessage.equals("/start")) {
                 sendMessage("Ожидаю сообщения формата: 01.01.2022 20:00 Сделать домашнюю работу", chatId);
             } else {
-                Pattern pattern = Pattern.compile("([0-9\\.\\:\\s]{16})(\\s)([\\W+]+)");
-                Matcher matcher = pattern.matcher(incomingMessage);
+                pattern = Pattern.compile("([0-9\\.\\:\\s]{16})(\\s)([\\W+]+)");
+                matcher = pattern.matcher(incomingMessage);
                 if (matcher.matches()) {
                     String date = matcher.group(1);
                     String item = matcher.group(3);
